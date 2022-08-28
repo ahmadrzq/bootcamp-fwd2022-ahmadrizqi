@@ -28,4 +28,11 @@ class Specialist extends Model
         'update_at',
         'deleted_at',
     ];
+
+    //one to many
+    public function doctor()
+    {
+        // 2 parameter (path model, field foreign key)
+        return $this->hasMany('App\Models\Operational\Doctor.php','specialist_id');
+    }
 }
