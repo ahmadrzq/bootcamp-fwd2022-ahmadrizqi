@@ -20,8 +20,8 @@ class ConfigPaymentSeeder extends Seeder
             [
                 'fee' => '150000',
                 'vat' => '20', // vat is percentage
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

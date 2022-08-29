@@ -18,18 +18,18 @@ class TypeUserSeeder extends Seeder
         $type_user = [
             [
                 'name' => 'Admin',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Dokter',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Pasien',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

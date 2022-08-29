@@ -18,18 +18,18 @@ class ConsultationSeeder extends Seeder
          $consultation = [
             [
                 'name' => 'Jantung Sesak',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Tekanan Darah Tinggi',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'Gangguan Irama Jantung',
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 
