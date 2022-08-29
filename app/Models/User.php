@@ -65,14 +65,14 @@ class User extends Authenticatable
     public function appointment()
     {
         // 2 parameter (path model, field foreign key)
-        return $this->hasMany('app\Models\Operational\Appointment.php','user_id');
+        return $this->hasMany('App\Models\Operational\Appointment.php','user_id');
     }
     
     //one to many
     public function role_user()
     {
         // 2 parameter (path model, field foreign key)
-        return $this->hasMany('app\Models\ManagementAccess\RoleUser.php','user_id');
+        return $this->hasMany('App\Models\ManagementAccess\RoleUser.php','user_id');
     }
 
     //one to one

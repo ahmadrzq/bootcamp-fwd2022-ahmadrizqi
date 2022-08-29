@@ -41,7 +41,7 @@ class RoleUser extends Model
     public function user()
     {
         // 2 parameter (path model, field foreign key, field primary key form table hasMany/hasOne)
-        return $this->belongsTo('app\Models\User.php','user_id', 'id');
+        return $this->belongsTo('App\Models\User.php','user_id', 'id');
     }
 
 
