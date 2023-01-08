@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Doctor;
 
+use App\Models\Operational\Doctor;
+use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use Symfony\Component\HttpFoundation\Request;
 
 class StoreDoctorRequest extends FormRequest
 {
@@ -13,7 +16,7 @@ class StoreDoctorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +27,25 @@ class StoreDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'specialist_id' => [
+                'required',
+                'integer',
+            ],
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'fee' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'photo' => [
+                'nullable',
+                'mimes:jpeg,svg,png',
+                'max:10000',
+            ],
         ];
     }
 }

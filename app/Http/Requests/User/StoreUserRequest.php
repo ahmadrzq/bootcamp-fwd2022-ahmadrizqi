@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Models\User;
+use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,7 +16,7 @@ class StoreUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,8 +28,8 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' =>[ 'required', 'string', 'max:225'],
-            'email' =>[ 'required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' =>[ 'string', 'min:8', 'max:225'],
+            'email' =>[ 'required', 'email', 'max:255', 'unique:users'],
+            'password' =>[ 'string', 'min:8', 'max:225','mixedCase'],
         ];
     }
 }
