@@ -50,6 +50,17 @@
                 </a>
             </div>
 
+            {{-- Logout Test --}}
+            <div class="hidden lg:ml-10 lg:flex lg:items-center">
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
+
+                    <x-jet-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('Log Out') }}
+                    </x-jet-dropdown-link>
+                </form>
+            </div>
+
             <!-- Mobile Toggle button -->
             <div class="-mr-2 flex items-center lg:hidden">
                 <button type="button"
