@@ -27,7 +27,10 @@
                             <label for="name" class="block">
                                 <input type="text" id="name" name="name"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Complete Name":value="old('name')" />
+                                    placeholder="Complete Name"value="{{old('name')}}" required autofocus/>
+                                    @if ($errors->has('name'))
+                                    <p class="">{{ $errors->first('name') }}</p>
+                                @endif
                             </label>
 
                             {{-- <label for="age" class="block">
@@ -39,19 +42,28 @@
                             <label for="email" class="block">
                                 <input type="email" id="email" name="email"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Email Address" :value="old('email')" />
+                                    placeholder="Email Address" value="{{old('email')}}" required autofocus/>
+                                    @if ($errors->has('email'))
+                                    <p class="">{{ $errors->first('email') }}</p>
+                                @endif
                             </label>
 
                             <label for="password" class="block">
                                 <input type="password" id="password" name="password"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Password" />
+                                    placeholder="Password" value="{{old('password')}}" required autofocus/>
+                                    @if ($errors->has('password'))
+                                    <p class="">{{ $errors->first('password') }}</p>
+                                @endif
                             </label>
 
                             <label for="password_confirmation" class="block">
                                 <input type="password" id="password_confirmation" name="password_confirmation"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="password_confirmation" :value="old('password_confirmation')" />
+                                    placeholder="Password Confirmation" required autofocus/>
+                                    @if ($errors->has('password'))
+                                    <p class="">{{ $errors->first('password') }}</p>
+                                @endif
                             </label>
 
                             <div class="mt-10 grid gap-6">
@@ -59,7 +71,7 @@
                                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full">
                                     Continue
                                 </button>
-                                <a href="{{ route('index') }}"
+                                <a href="{{ route('login') }}"
                                     class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full">
                                     Sign In
                                 </a>

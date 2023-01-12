@@ -47,7 +47,7 @@
                             <label class="block">
                                 <input for="password" type="password" id="password" name="password"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Password" value="{{ old('password') }}" required />
+                                    placeholder="Password" value="{{ old('password') }}" required autofocus/>
 
                                 @if ($errors->has('password'))
                                     <p class="">{{ $errors->first('password') }}</p>
