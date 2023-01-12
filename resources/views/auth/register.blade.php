@@ -30,11 +30,11 @@
                                     placeholder="Complete Name":value="old('name')" />
                             </label>
 
-                            <label for="age" class="block">
+                            {{-- <label for="age" class="block">
                                 <input type="text" id="age" name="age"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                     placeholder="Age" :value="old('age')" />
-                            </label>
+                            </label> --}}
 
                             <label for="email" class="block">
                                 <input type="email" id="email" name="email"
@@ -46,6 +46,12 @@
                                 <input type="password" id="password" name="password"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                                     placeholder="Password" />
+                            </label>
+
+                            <label for="password_confirmation" class="block">
+                                <input type="password" id="password_confirmation" name="password_confirmation"
+                                    class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
+                                    placeholder="password_confirmation" :value="old('password_confirmation')" />
                             </label>
 
                             <div class="mt-10 grid gap-6">

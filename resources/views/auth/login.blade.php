@@ -11,6 +11,12 @@
 
     <div class="min-h-screen">
         <div class="grid lg:grid-cols-2">
+            @if (session('status'))
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <!-- Form-->
             <div class="px-4 lg:px-[91px] pt-10">
 
@@ -29,16 +35,23 @@
                         <!-- Form input -->
                         <form action="{{ route('login') }}" method="POST" class="grid gap-6">
                             @csrf
-                            <label for="email" class="block" value="{{__('Email')}}">
-                                <input type="email" name="email"
+                            <label class="block">
+                                <input for="email" type="email" id="email" name="email"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Email Address" :value="old('email')"/>
+                                    placeholder="Email Address" value="{{ old('email') }}" required autofocus />
+                                @if ($errors->has('email'))
+                                    <p class="">{{ $errors->first('email') }}</p>
+                                @endif
                             </label>
 
-                            <label for="pasasword" class="block" value="{{ __('Password') }}">
-                                <input type="password" name="password"
+                            <label class="block">
+                                <input for="password" type="password" id="password" name="password"
                                     class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                                    placeholder="Password" />
+                                    placeholder="Password" value="{{ old('password') }}" required />
+
+                                @if ($errors->has('password'))
+                                    <p class="">{{ $errors->first('password') }}</p>
+                                @endif
                             </label>
 
                             <div class="mt-10 grid gap-6">
@@ -46,7 +59,7 @@
                                     class="text-center text-white text-lg font-medium bg-[#0D63F3] px-10 py-4 rounded-full">
                                     Sign In
                                 </button>
-                                <a href="{{route('register')}}"
+                                <a href="{{ route('register') }}"
                                     class="text-center text-lg text-[#1E2B4F] font-medium bg-[#F2F6FE] px-10 py-4 rounded-full">
                                     New Account
                                 </a>
@@ -63,7 +76,8 @@
                 <div class="flex flex-col justify-center h-full px-24 pt-10 pb-20">
                     <div class="relative">
                         <div class="relative top-0 -left-5 mb-7">
-                            <img src="{{asset('assets/frontsite/images/blockqoutation.svg')}}" class="h-[30px]" alt="" />
+                            <img src="{{ asset('assets/frontsite/images/blockqoutation.svg') }}" class="h-[30px]"
+                                alt="" />
                         </div>
                         <p class="text-2xl leading-loose">
                             MeetDoctor telah membantu saya terhubung dengan dokter yang
@@ -74,7 +88,8 @@
                             <div class="flex items-center">
                                 <div class="ring-1 ring-[#0D63F3] ring-offset-4 rounded-full">
                                     <img class="inline-block h-14 w-14 rounded-full"
-                                        src="{{asset('assets/frontsite/images/patient-testimonial.png')}}" alt="" />
+                                        src="{{ asset('assets/frontsite/images/patient-testimonial.png') }}"
+                                        alt="" />
                                 </div>
                                 <div class="ml-5">
                                     <p class="font-medium text-[#1E2B4F]">Shayna</p>
