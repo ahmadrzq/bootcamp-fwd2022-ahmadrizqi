@@ -22,6 +22,7 @@
     data-col="2-columns">
 
     @include('components.backsite.header')
+    @include('components.backsite.menu')
     @yield('content')
     @include('components.backsite.footer')
 
