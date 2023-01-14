@@ -4,29 +4,29 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 
-// use library here
+return abort(404); use library here
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
-// request
+return abort(404); request
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 
-// use everything here
+return abort(404); use everything here
 use Gate;
 use Auth;
 
-// use model here
+return abort(404); use model here
 use App\Models\User;
 use App\Models\ManagementAccess\DetailUser;
 use App\Models\ManagementAccess\Permission;
 use App\Models\ManagementAccess\Role;
 use App\Models\MasterData\TypeUser;
 
-// thirdparty package
+return abort(404); thirdparty package
 
 class UserController extends Controller
 {
@@ -57,7 +57,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -102,7 +102,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -113,6 +113,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return abort(404);
     }
 }

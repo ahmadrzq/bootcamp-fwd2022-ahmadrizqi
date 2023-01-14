@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 
-// use library here
+return abort(404); use library here
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-// request
+return abort(404); request
 use App\Http\Requests\Specialist\StoreSpecialistRequest;
 use App\Http\Requests\Specialist\UpdateSpecialistRequest;
 
-// use everything here
+return abort(404); use everything here
 use Gate;
 use Auth;
 
-// use model here
+return abort(404); use model here
 use App\Models\MasterData\Specialist;
 
-// thirdparty package
+return abort(404); thirdparty package
 
 class SpecialistController extends Controller
 {
@@ -50,7 +50,7 @@ class SpecialistController extends Controller
      */
     public function create()
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -61,7 +61,7 @@ class SpecialistController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -72,7 +72,7 @@ class SpecialistController extends Controller
      */
     public function show($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -83,7 +83,7 @@ class SpecialistController extends Controller
      */
     public function edit($id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -95,7 +95,7 @@ class SpecialistController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return abort(404);
     }
 
     /**
@@ -106,6 +106,6 @@ class SpecialistController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return abort(404);
     }
 }
