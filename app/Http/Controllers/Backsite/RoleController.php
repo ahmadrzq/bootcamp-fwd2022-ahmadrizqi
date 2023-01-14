@@ -3,7 +3,26 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+// use library here
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// request
+use App\Http\Requests\Role\StoreRoleRequest;
+use App\Http\Requests\Role\UpdateRoleRequest;
+
+// use everything here
+use Gate;
+use Auth;
+
+// use model here
+use App\Models\ManagementAccess\Role;
+use App\Models\ManagementAccess\RoleUser;
+use App\Models\ManagementAccess\Permission;
+use App\Models\ManagementAccess\PermissionRole;
+
+// thirdparty package
 
 class RoleController extends Controller
 {
