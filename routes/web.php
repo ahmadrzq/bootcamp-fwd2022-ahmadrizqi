@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backsite\RoleController;
+use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
 use App\Http\Controllers\Backsite\DashboardController;
@@ -40,4 +41,6 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('permission', PermissionController::class);
     // role
     Route::resource('role', RoleController::class);
+    // type user
+    Route::resource('type_user', TypeUserController::class);
 });

@@ -39,7 +39,7 @@
                     {{-- @can('type_user_access') --}}
                     <li
                         class="{{ request()->is('backsite/type_user') || request()->is('backsite/type_user/*') || request()->is('backsite/*/type_user') || request()->is('backsite/*/type_user/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.type_user.index')}}">
                             <i></i><span>Type User</span>
                         </a>
                     </li>
