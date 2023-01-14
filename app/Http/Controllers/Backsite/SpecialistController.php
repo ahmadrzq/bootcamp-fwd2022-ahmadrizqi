@@ -41,7 +41,7 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialist = Specialist::orderBy('created_at','desc')->get();
-        
+
         return view('pages.backsite.master-data.specialist.index',compact('specialist'));
     }
 
