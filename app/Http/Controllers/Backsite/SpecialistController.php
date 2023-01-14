@@ -68,6 +68,9 @@ class SpecialistController extends Controller
 
         //store data to database
         $specialist = Specialist::create($data);
+
+        alert()->success('Success Message','Specialist has been created successfully!');
+        return redirect()->route('backsite.specialist.index');
     }
 
     /**
