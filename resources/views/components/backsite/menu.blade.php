@@ -74,7 +74,7 @@
                     {{-- @can('consultation_access') --}}
                     <li
                         class="{{ request()->is('backsite/consultation') || request()->is('backsite/consultation/*') || request()->is('backsite/*/consultation') || request()->is('backsite/*/consultation/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.consultation.index')}}">
                             <i></i><span>Consultation</span>
                         </a>
                     </li>
