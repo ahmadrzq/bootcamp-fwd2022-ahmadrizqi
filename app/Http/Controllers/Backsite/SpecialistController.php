@@ -41,6 +41,7 @@ class SpecialistController extends Controller
     public function index()
     {
         $specialist = Specialist::orderBy('created_at','desc')->get();
+        
         return view('pages.backsite.master-data.specialist.index',compact('specialist'));
     }
 
@@ -60,9 +61,13 @@ class SpecialistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSpecialistRequest $request)
     {
-        return abort(404);
+        // get all request from frontsite
+        $data = $request->all();
+
+        //store data to database
+        $specialist = Specialist::create($data);
     }
 
     /**
@@ -94,7 +99,7 @@ class SpecialistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSpecialistRequest $request, $id)
     {
         return abort(404);
     }
