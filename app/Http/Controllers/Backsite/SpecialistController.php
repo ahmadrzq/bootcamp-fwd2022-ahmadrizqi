@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
 
-return abort(404); use library here
+// use library here
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-return abort(404); request
+// request
 use App\Http\Requests\Specialist\StoreSpecialistRequest;
 use App\Http\Requests\Specialist\UpdateSpecialistRequest;
 
-return abort(404); use everything here
+// use everything here
 use Gate;
 use Auth;
 
-return abort(404); use model here
+// use model here
 use App\Models\MasterData\Specialist;
 
-return abort(404); thirdparty package
+// thirdparty package
 
 class SpecialistController extends Controller
 {
@@ -40,7 +40,8 @@ class SpecialistController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.master-data.specialist.index');
+        $specialist = Specialist::orderBy('created_at','desc')->get();
+        return view('pages.backsite.master-data.specialist.index',compact('specialist'));
     }
 
     /**
