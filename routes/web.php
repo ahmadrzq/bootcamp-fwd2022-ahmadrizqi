@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\PermissionController;
+use App\Http\Controllers\Backsite\SpecialistController;
 use App\Http\Controllers\Frontsite\AppointmentController;
 
 /*
@@ -46,4 +47,6 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('type_user', TypeUserController::class);
     // type user
     Route::resource('user', UserController::class);
+    // specialist
+    Route::resource('specialist', SpecialistController::class);
 });
