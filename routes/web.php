@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backsite\RoleController;
 use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Backsite\TypeUserController;
+use App\Http\Controllers\Backsite\ConfigPaymentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
 use App\Http\Controllers\Backsite\DashboardController;
@@ -46,10 +47,12 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('role', RoleController::class);
     // type user
     Route::resource('type_user', TypeUserController::class);
-    // type user
+    // user
     Route::resource('user', UserController::class);
     // specialist
     Route::resource('specialist', SpecialistController::class);
     // consultation
     Route::resource('consultation', ConsultationController::class);
+    // config payment
+    Route::resource('config_payment', ConfigPaymentController::class);
 });
