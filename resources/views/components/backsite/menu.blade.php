@@ -31,7 +31,7 @@
                     {{-- @can('role_access') --}}
                     <li
                         class="{{ request()->is('backsite/role') || request()->is('backsite/role/*') || request()->is('backsite/*/role') || request()->is('backsite/*/role/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.role.index')}}">
                             <i></i><span>Role</span>
                         </a>
                     </li>
