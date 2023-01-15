@@ -3,7 +3,20 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
+// use library here
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
+
+// request
+use App\Http\Requests\ConfigPayment\UpdateConfigPaymentRequest;
+
+// use everything here
+use Gate;
+use Auth;
+
+// use model here
+use App\Models\MasterData\ConfigPayment;
 
 class ConfigPaymentController extends Controller
 {
@@ -55,9 +68,9 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ConfigPayment $config_payment)
     {
-        return abort(404);
+        return view('pages.backsite.master-data.config-payment.edit', compact('config_payment'));
     }
 
     /**
@@ -67,9 +80,16 @@ class ConfigPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateConfigPaymentRequest $request, ConfigPayment $config_payment)
     {
-        return abort(404);
+        // get all request from frontsite
+        $data = $request->all();
+
+        //store data to database
+        $config_payment->update($data);
+
+        alert()->success('Success Message', 'Config Payment has been updated successfully!');
+        return redirect()->route('backsite.config_payment.index');
     }
 
     /**
