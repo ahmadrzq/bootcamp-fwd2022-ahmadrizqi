@@ -132,8 +132,11 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Doctor $doctor)
     {
-        return abort(404);
+        $doctor->delete();
+
+        alert()->success('Success Message', 'Doctor has been deleted successfully!');
+        return back();
     }
 }
