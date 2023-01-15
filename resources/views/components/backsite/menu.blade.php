@@ -123,7 +123,7 @@
 
                     {{-- @can('appointment_access') --}}
                     <li
-                        class="{{ request()->is('backsite/appointment') || request()->is('backsite/appointment/*') || request()->is('backsite/*/appointment') || request()->is('backsite/*/appointment/*') ? 'active' : '' }} ">
+                        class="{{ request()->is('backsite/report_appointment') || request()->is('backsite/report_appointment/*') || request()->is('backsite/*/report_appointment') || request()->is('backsite/*/report_appointment/*') ? 'active' : '' }} ">
                         <a class="menu-item" href="{{route('backsite.report_appointment.index')}}">
                             <i></i><span>Appointment</span>
                         </a>
@@ -132,7 +132,7 @@
 
                     {{-- @can('transaction_access') --}}
                     <li
-                        class="{{ request()->is('backsite/transaction') || request()->is('backsite/transaction/*') || request()->is('backsite/*/transaction') || request()->is('backsite/*/transaction/*') ? 'active' : '' }} ">
+                        class="{{ request()->is('backsite/report_transaction') || request()->is('backsite/report_transaction/*') || request()->is('backsite/*/report_transaction') || request()->is('backsite/*/report_transaction/*') ? 'active' : '' }} ">
                         <a class="menu-item" href="{{route('backsite.report_transaction.index')}}">
                             <i></i><span>Transaction</span>
                         </a>

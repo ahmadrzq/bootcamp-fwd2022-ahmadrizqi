@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Backsite;
 
 use App\Http\Controllers\Controller;
-
 // use library here
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -15,12 +14,14 @@ use Auth;
 
 // use model here
 use App\Models\User;
+use App\Models\ManagementAccess\DetailUser;
 use App\Models\Operational\Appointment;
 use App\Models\Operational\Transaction;
 use App\Models\Operational\Doctor;
 use App\Models\MasterData\Specialist;
 use App\Models\MasterData\Consultation;
 use App\Models\MasterData\ConfigPayment;
+use Illuminate\Database\Eloquent\Builder;
 
 class HospitalPatientController extends Controller
 {
@@ -41,13 +42,9 @@ class HospitalPatientController extends Controller
      */
     public function index()
     {
-        // $hospital_patient = User::whereHas('detail_user', function ($query) {
-        //     return $query->where('type_user_id', 3);
-        // })->orderBy('created_at', 'desc')->get();
+        $hospital_patient = User::orderBy('created_at', 'desc')->get();
 
-        // dd($hospital_patient);
-
-        return view('pages.backsite.operational.hospital-patient.index');
+        return view('pages.backsite.operational.hospital-patient.index', compact('hospital_patient'));
     }
 
     /**
