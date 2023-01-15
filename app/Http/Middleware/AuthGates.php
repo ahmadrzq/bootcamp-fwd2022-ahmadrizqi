@@ -37,15 +37,16 @@ class AuthGates
                     $permissionsArray[$permissions->title][] = $role->id;
                 }
             }
+            
+            //check user role
+            foreach ($permissionsArray as $title => $roles) {
+                Gate::define($title, function (\App\Models\User $user)
+                use ($roles) {
+                    return count(array_intersect($user->role->pluck('id')->toArray(), $roles)) > 0;
+                });
+            }
         }
 
-        //check user role
-        foreach ($permissionsArray as $title => $roles) {
-            Gate::define($title, function (\App\Models\User $user)
-            use ($roles) {
-                return count(array_intersect($user->role->pluck('id')->toArray(), $roles)) > 0;
-            });
-        }
 
         //return all middleware
         return $next($request);
