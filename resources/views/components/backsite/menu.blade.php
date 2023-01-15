@@ -99,14 +99,14 @@
                         class="menu-title" data-i18n="Operational">Operational</span></a>
                 <ul class="menu-content">
 
-                    {{-- @can('doctor_access') --}}
+                    @can('doctor_access')
                         <li
                             class="{{ request()->is('backsite/doctor') || request()->is('backsite/doctor/*') || request()->is('backsite/*/doctor') || request()->is('backsite/*/doctor/*') ? 'active' : '' }} ">
                             <a class="menu-item" href="{{route('backsite.doctor.index')}}">
                                 <i></i><span>Doctor</span>
                             </a>
                         </li>
-                    {{-- @endcan --}}
+                    @endcan
 
                     {{-- @can('hospital_patient_access') --}}
                     <li

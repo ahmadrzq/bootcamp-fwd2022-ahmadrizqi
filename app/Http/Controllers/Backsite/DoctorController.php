@@ -90,6 +90,8 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         return view('pages.backsite.operational.doctor.show', compact('doctor'));
     }
 
@@ -101,6 +103,8 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         //for selet2 = ascending a to z
         $specialist = Specialist::orderBy('name', 'asc')->get();
 
@@ -134,6 +138,8 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
+        abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '404 Forbidden');
+
         $doctor->delete();
 
         alert()->success('Success Message', 'Doctor has been deleted successfully!');
