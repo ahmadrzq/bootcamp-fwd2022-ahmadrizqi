@@ -1,17 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+//frontsite
+use App\Http\Controllers\Frontsite\LandingController;
+use App\Http\Controllers\Frontsite\PaymentController;
+use App\Http\Controllers\Frontsite\AppointmentController;
+
+//backsite
 use App\Http\Controllers\Backsite\RoleController;
 use App\Http\Controllers\Backsite\UserController;
 use App\Http\Controllers\Backsite\TypeUserController;
 use App\Http\Controllers\Backsite\ConfigPaymentController;
-use App\Http\Controllers\Frontsite\LandingController;
-use App\Http\Controllers\Frontsite\PaymentController;
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\PermissionController;
 use App\Http\Controllers\Backsite\SpecialistController;
 use App\Http\Controllers\Backsite\ConsultationController;
-use App\Http\Controllers\Frontsite\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
