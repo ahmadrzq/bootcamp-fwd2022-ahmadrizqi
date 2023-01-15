@@ -99,19 +99,19 @@
                         class="menu-title" data-i18n="Operational">Operational</span></a>
                 <ul class="menu-content">
 
-                    @can('doctor_access')
+                    {{-- @can('doctor_access') --}}
                         <li
                             class="{{ request()->is('backsite/doctor') || request()->is('backsite/doctor/*') || request()->is('backsite/*/doctor') || request()->is('backsite/*/doctor/*') ? 'active' : '' }} ">
-                            <a class="menu-item" href="">
+                            <a class="menu-item" href="{{route('backsite.doctor.index')}}">
                                 <i></i><span>Doctor</span>
                             </a>
                         </li>
-                    @endcan
+                    {{-- @endcan --}}
 
                     {{-- @can('hospital_patient_access') --}}
                     <li
                         class="{{ request()->is('backsite/hospital_patient') || request()->is('backsite/hospital_patient/*') || request()->is('backsite/*/hospital_patient') || request()->is('backsite/*/hospital_patient/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.hospital_patient.index')}}">
                             <i></i><span>Hospital Patient</span>
                         </a>
                     </li>
@@ -124,7 +124,7 @@
                     {{-- @can('appointment_access') --}}
                     <li
                         class="{{ request()->is('backsite/appointment') || request()->is('backsite/appointment/*') || request()->is('backsite/*/appointment') || request()->is('backsite/*/appointment/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.report_appointment.index')}}">
                             <i></i><span>Appointment</span>
                         </a>
                     </li>
@@ -133,7 +133,7 @@
                     {{-- @can('transaction_access') --}}
                     <li
                         class="{{ request()->is('backsite/transaction') || request()->is('backsite/transaction/*') || request()->is('backsite/*/transaction') || request()->is('backsite/*/transaction/*') ? 'active' : '' }} ">
-                        <a class="menu-item" href="">
+                        <a class="menu-item" href="{{route('backsite.report_transaction.index')}}">
                             <i></i><span>Transaction</span>
                         </a>
                     </li>

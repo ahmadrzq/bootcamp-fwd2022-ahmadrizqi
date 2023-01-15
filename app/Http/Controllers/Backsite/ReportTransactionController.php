@@ -5,30 +5,26 @@ namespace App\Http\Controllers\Backsite;
 use App\Http\Controllers\Controller;
 
 // use library here
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
-
-// request
-use App\Http\Requests\User\StoreUserRequest;
-use App\Http\Requests\User\UpdateUserRequest;
 
 // use everything here
 use Gate;
 use Auth;
 
 // use model here
+use App\Models\Operational\Transaction;
+use App\Models\Operational\Appointment;
+use App\Models\Operational\Doctor;
 use App\Models\User;
 use App\Models\ManagementAccess\DetailUser;
-use App\Models\ManagementAccess\Permission;
-use App\Models\ManagementAccess\Role;
-use App\Models\MasterData\TypeUser;
+use App\Models\MasterData\Consultation;
+use App\Models\MasterData\Specialist;
+use App\Models\MasterData\ConfigPayment;
 
 // thirdparty package
 
-class UserController extends Controller
+class ReportTransactionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -39,7 +35,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +43,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('pages.backsite.management-access.user.index');
+        $transaction = Transaction::orderBy('created_at','desc')->get();
+        return view('pages.backsite.operational.transaction.index', compact('transaction'));
     }
 
     /**

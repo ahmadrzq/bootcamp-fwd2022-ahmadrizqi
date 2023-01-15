@@ -3,19 +3,23 @@
 use Illuminate\Support\Facades\Route;
 
 //frontsite
+use App\Http\Controllers\Frontsite\AppointmentController;
 use App\Http\Controllers\Frontsite\LandingController;
 use App\Http\Controllers\Frontsite\PaymentController;
-use App\Http\Controllers\Frontsite\AppointmentController;
 
 //backsite
 use App\Http\Controllers\Backsite\RoleController;
 use App\Http\Controllers\Backsite\UserController;
+use App\Http\Controllers\Backsite\DoctorController;
 use App\Http\Controllers\Backsite\TypeUserController;
-use App\Http\Controllers\Backsite\ConfigPaymentController;
 use App\Http\Controllers\Backsite\DashboardController;
 use App\Http\Controllers\Backsite\PermissionController;
 use App\Http\Controllers\Backsite\SpecialistController;
 use App\Http\Controllers\Backsite\ConsultationController;
+use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\HospitalPatientController;
+use App\Http\Controllers\Backsite\ReportAppointmentController;
+use App\Http\Controllers\Backsite\ReportTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +31,6 @@ use App\Http\Controllers\Backsite\ConsultationController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::resource('/', LandingController::class);
 
@@ -59,4 +59,12 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('consultation', ConsultationController::class);
     // config payment
     Route::resource('config_payment', ConfigPaymentController::class);
+    // report appointment
+    Route::resource('report_appointment', ReportAppointmentController::class);
+    // report transaction
+    Route::resource('report_transaction', ReportTransactionController::class);
+    // doctor
+    Route::resource('doctor', DoctorController::class);
+    // hospital patient
+    Route::resource('hospital_patient', HospitalPatientController::class);
 });
