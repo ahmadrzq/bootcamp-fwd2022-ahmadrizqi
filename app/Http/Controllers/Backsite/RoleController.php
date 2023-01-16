@@ -43,8 +43,11 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role = Role::orderBy('created_at','desc')->get();
-        return view('pages.backsite.management-access.role.index',compact('role'));
+        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $role = Role::orderBy('created_at', 'desc')->get();
+
+        return view('pages.backsite.management-access.role.index', compact('role'));
     }
 
     /**
@@ -68,10 +71,10 @@ class RoleController extends Controller
         // get all request from frontsite
         $data = $request->all();
 
-        //store data to database
+        // store to database
         $role = Role::create($data);
 
-        alert()->success('Success Message', 'Role has been created successfully!');
+        alert()->success('Success Message', 'Successfully added new role');
         return redirect()->route('backsite.role.index');
     }
 
@@ -83,7 +86,11 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        $role = load('permission');
+        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        // need more notes here
+        $role->load('permission');
+
         return view('pages.backsite.management-access.role.show', compact('role'));
     }
 
@@ -95,9 +102,13 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        // need more notes here
         $permission = Permission::all();
-        $role = load('permission');
-        return view('pages.backsite.management-access.role.edit', compact('permission','role'));
+        $role->load('permission');
+
+        return view('pages.backsite.management-access.role.edit', compact('permission', 'role'));
     }
 
     /**
@@ -109,11 +120,11 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        // get all request from frontsite and store data to database
+        // need more notes here
         $role->update($request->all());
-        $role->permission()->sync($request->input('permission',[]));
+        $role->permission()->sync($request->input('permission', []));
 
-        alert()->success('Success Message', 'Role has been updated successfully!');
+        alert()->success('Success Message', 'Successfully updated role');
         return redirect()->route('backsite.role.index');
     }
 
@@ -125,9 +136,12 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        // need more notes here
         $role->forceDelete();
-        
-        alert()->success('Success Message', 'Role has been deleted successfully!');
+
+        alert()->success('Success Message', 'Successfully deleted role');
         return back();
     }
 }
