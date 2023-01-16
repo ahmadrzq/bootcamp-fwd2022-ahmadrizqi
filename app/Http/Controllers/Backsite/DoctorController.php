@@ -147,6 +147,32 @@ class DoctorController extends Controller
         // get all request from frontsite
         $data = $request->all();
 
+        // re format before push to table
+        $data['fee'] = str_replace(',', '', $data['fee']);
+        $data['fee'] = str_replace('IDR ', '', $data['fee']);
+
+        // upload process here
+        // change format photo
+        if (isset($data['photo'])) {
+
+            // first checking old photo to delete from storage
+            $get_item = $doctor['photo'];
+
+            // change file locations
+            $data['photo'] = $request->file('photo')->store(
+                'assets/file-doctor',
+                'public'
+            );
+
+            // delete old photo from storage
+            $data_old = 'storage/' . $get_item;
+            if (File::exists($data_old)) {
+                File::delete($data_old);
+            } else {
+                File::delete('storage/app/public/' . $get_item);
+            }
+        }
+
         //store data to database
         $doctor->update($data);
 
