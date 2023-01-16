@@ -39,7 +39,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permission = Permission::orderBy('created_at','desc')->get();
+        abort_if(Gate::denies('permission_access'), response::HTTP_FORBIDDEN, '403 Forbidden');
+        $permission = Permission::orderBy('id','desc')->get();
         return view('pages.backsite.management-access.permission.index', compact('permission'));
     }
 
