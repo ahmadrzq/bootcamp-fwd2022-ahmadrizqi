@@ -49,13 +49,13 @@ class DoctorController extends Controller
         // for table grid
         $doctor = Doctor::orderBy('created_at', 'desc')->get();
 
-        //for selet2 = ascending a to z
+        // for select2 = ascending a to z
         $specialist = Specialist::orderBy('name', 'asc')->get();
-        $user = User::whereHas('detail_user', function ($query) {
-            $query->where('type_user_id', 2);
-        })->orderBy('name', 'asc')->get();
+        // $user = User::whereHas('detail_user', function ($query) {
+        //     $query->where('type_user_id', 2);
+        // })->orderBy('name', 'asc')->get();
 
-        return view('pages.backsite.operational.doctor.index', compact('doctor', 'specialist', 'user'));
+        return view('pages.backsite.operational.doctor.index', compact('doctor', 'specialist'));
     }
 
     /**

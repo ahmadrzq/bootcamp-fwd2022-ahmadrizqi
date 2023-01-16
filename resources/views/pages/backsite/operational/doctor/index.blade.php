@@ -73,7 +73,7 @@
                                                         <p>Please complete the input <code>required</code>, before you click the submit button.</p>
                                                     </div>
 
-                                                    <div class="form-group row {{ $errors->has('user_id') ? 'has-error' : '' }}">
+                                                    {{-- <div class="form-group row {{ $errors->has('user_id') ? 'has-error' : '' }}">
                                                         <label class="col-md-3 label-control">User Account <code style="color:red;">required</code></label>
                                                         <div class="col-md-9 mx-auto">
                                                             <select name="user_id"
@@ -89,7 +89,7 @@
                                                                 <p style="font-style: bold; color: red;">{{ $errors->first('user_id') }}</p>
                                                             @endif
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
 
                                                     <div class="form-group row {{ $errors->has('specialist_id') ? 'has-error' : '' }}">
                                                         <label class="col-md-3 label-control">Specialist <code style="color:red;">required</code></label>

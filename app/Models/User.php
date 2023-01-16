@@ -86,4 +86,8 @@ class User extends Authenticatable
         // 2 parameter (path model, field foreign key)
         return $this->hasOne('App\Models\ManagementAccess\DetailUser','user_id');
     }
+
+    public function doctor(){
+        return $this->hasOne('App\Models\Operational\Doctor','user_id');
+    }
 }

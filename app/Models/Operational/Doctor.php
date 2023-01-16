@@ -24,6 +24,7 @@ class Doctor extends Model
     // declate fillable
     protected $fillable = [
         'specialist_id',
+        'user_id',
         'name',
         'fee',
         'photo',
@@ -36,7 +37,7 @@ class Doctor extends Model
     public function specialist()
     {
         // 2 parameter (path model, field foreign key, field primary key form table hasMany/hasOne)
-        return $this->belongsTo('App\Models\MasterData\Specialist.php','specialist_id', 'id');
+        return $this->belongsTo('App\Models\MasterData\Specialist','specialist_id', 'id');
     }
 
     //one to many
@@ -44,5 +45,9 @@ class Doctor extends Model
     {
         // 2 parameter (path model, field foreign key)
         return $this->hasMany('App\Models\Operational\Appointment.php','doctor_id');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 }
