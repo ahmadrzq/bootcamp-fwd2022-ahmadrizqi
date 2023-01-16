@@ -1,8 +1,8 @@
 <table class="table table-bordered">
-    <tr>
+    {{-- <tr>
         <th>User Account</th>
         <td>{{ isset($doctor->user->name) ? $doctor->user->name : 'N/A' }}</td>
-    </tr>
+    </tr> --}}
     <tr>
         <th>Specialist</th>
         <td>{{ isset($doctor->specialist->name) ? $doctor->specialist->name : 'N/A' }}</td>
