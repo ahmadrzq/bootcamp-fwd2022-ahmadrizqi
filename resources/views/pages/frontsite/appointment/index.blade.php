@@ -8,12 +8,12 @@
         <div class="lg:max-w-7xl lg:flex items-center mx-auto px-4 lg:px-14 pt-6 py-20 lg:py-24 gap-x-24">
             <!-- Detail Doctor  -->
             <div class="lg:w-5/12 lg:border-r h-72 lg:h-[30rem] flex flex-col items-center justify-center text-center">
-                <img src="{{asset('assets/frontsite/images/doctor-1.png')}}"
+                <img src="{{ url(Storage::url($doctor->photo)) }}"
                     class="inline-block w-32 h-32 rounded-full bg-center object-cover object-top" alt="doctor-1" />
                 <div class="text-[#1E2B4F] text-lg font-semibold mt-4">
-                    Dr. Galih Pratama
+                    {{ $doctor->name }}
                 </div>
-                <div class="text-[#AFAEC3] mt-1">Cardiologist</div>
+                <div class="text-[#AFAEC3] mt-1">{{ $doctor->specialist->name }}</div>
                 <div class="flex justify-center items-center gap-x-2 mt-4">
                     <div class="flex items-center gap-2">
                         <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
@@ -70,13 +70,10 @@
                             <option disabled selected class="hidden">
                                 Topik Konsultasi
                             </option>
-                            <option value="Jantung Sesak">Jantung Sesak</option>
-                            <option value="Tekanan Darah Tinggi">
-                                Tekanan Darah Tinggi
-                            </option>
-                            <option value="Gangguan Irama Jantung">
-                                Gangguan Irama Jantung
-                            </option>
+                            @forelse ($consultation as $key => $consultation_item)
+                                <option value="{{ $consultation_item->name }}">{{ $consultation_item->name }}</option>
+                            @empty
+                            @endforelse
                         </select>
                     </label>
 
@@ -126,7 +123,7 @@
                     </label>
 
                     <div class="grid">
-                        <a href="{{route('payment.index')}}"
+                        <a href="{{ route('payment.index') }}"
                             class="bg-[#0D63F3] rounded-full mt-5 text-white text-lg font-medium px-10 py-3 text-center">Continue</a>
                     </div>
                 </form>
