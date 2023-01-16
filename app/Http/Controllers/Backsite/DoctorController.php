@@ -79,6 +79,26 @@ class DoctorController extends Controller
         // get all request from frontsite
         $data = $request->all();
 
+        // re format before push to table
+        $data['fee'] = str_replace(',', '', $data['fee']);
+        $data['fee'] = str_replace('IDR ', '', $data['fee']);
+
+        // upload process here
+        $path = public_path('app/public/assets/file-doctor');
+        if (!File::isDirectory($path)) {
+            $response = Storage::makeDirectory('public/assets/file-doctor');
+        }
+
+        // change file locations
+        if (isset($data['photo'])) {
+            $data['photo'] = $request->file('photo')->store(
+                'assets/file-doctor',
+                'public'
+            );
+        } else {
+            $data['photo'] = "";
+        }
+
         //store data to database
         $doctor = Doctor::create($data);
 
@@ -144,7 +164,7 @@ class DoctorController extends Controller
     {
         abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '404 Forbidden');
 
-        $doctor->delete();
+        $doctor->forceDelete();
 
         alert()->success('Success Message', 'Doctor has been deleted successfully!');
         return back();
