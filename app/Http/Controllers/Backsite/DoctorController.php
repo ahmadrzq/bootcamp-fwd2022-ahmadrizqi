@@ -188,7 +188,17 @@ class DoctorController extends Controller
      */
     public function destroy(Doctor $doctor)
     {
-        abort_if(Gate::denies('doctor_edit'), Response::HTTP_FORBIDDEN, '404 Forbidden');
+        abort_if(Gate::denies('doctor_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        // first checking old file to delete from storage
+        $get_item = $doctor['photo'];
+
+        $data = 'storage/' . $get_item;
+        if (File::exists($data)) {
+            File::delete($data);
+        } else {
+            File::delete('storage/app/public/' . $get_item);
+        }
 
         $doctor->forceDelete();
 
