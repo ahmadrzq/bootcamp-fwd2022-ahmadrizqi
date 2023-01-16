@@ -123,7 +123,7 @@
                 <!-- Card -->
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 lg:gap-10 mt-10">
                     @forelse ($doctor as $key => $doctor_item)
-                        <a href="" class="group">
+                        <a href="{{ route('appointment.doctor', $doctor_item->id) }}" class="group">
                             <div class="relative z-10 w-full h-[350px] rounded-2xl overflow-hidden">
                                 <img src="{{ url(Storage::url($doctor_item->photo)) }}"
                                     class="w-full h-full bg-center bg-no-repeat object-cover object-center" alt="Doctor 1">

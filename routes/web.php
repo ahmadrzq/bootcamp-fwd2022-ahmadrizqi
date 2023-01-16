@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::resource('payment', PaymentController::class);
 
     // Appointment page
+    Route::get('appointment/doctor/{id}', [AppointmentController::class, 'appointment'])->name('appointment.doctor');
     Route::resource('appointment', AppointmentController::class);
 });
 

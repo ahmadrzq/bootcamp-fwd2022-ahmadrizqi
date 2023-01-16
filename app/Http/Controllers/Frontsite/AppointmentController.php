@@ -25,7 +25,7 @@ class AppointmentController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +33,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.appointment.index');
+        return abort(404);
     }
 
     /**
@@ -100,5 +100,15 @@ class AppointmentController extends Controller
     public function destroy($id)
     {
         return abort(404);
+    }
+
+    // custom
+
+    public function appointment($id)
+    {
+        $doctor = Doctor::where('id', $id)->first();
+        $consultation = Consultation::orderBy('name', 'asc')->get();
+
+        return view('pages.frontsite.appointment.index', compact('doctor', 'consultation'));
     }
 }
