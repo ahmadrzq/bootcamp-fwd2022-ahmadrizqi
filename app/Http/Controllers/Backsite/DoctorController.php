@@ -45,13 +45,17 @@ class DoctorController extends Controller
      */
     public function index()
     {
+        abort_if(Gate::denies('doctor_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         // for table grid
         $doctor = Doctor::orderBy('created_at', 'desc')->get();
 
         //for selet2 = ascending a to z
         $specialist = Specialist::orderBy('name', 'asc')->get();
+        $user = User::whereHas('detail_user', function ($query) {
+            $query->where('type_user_id', 2);
+        })->orderBy('name', 'asc')->get();
 
-        return view('pages.backsite.operational.doctor.index', compact('doctor', 'specialist'));
+        return view('pages.backsite.operational.doctor.index', compact('doctor', 'specialist', 'user'));
     }
 
     /**
