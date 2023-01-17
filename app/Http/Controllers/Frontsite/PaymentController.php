@@ -117,11 +117,11 @@ class PaymentController extends Controller
         $specialist_fee = $appointment->doctor->specialist->price;
         $doctor_fee = $appointment->doctor->fee;
         $hospital_fee = $config_payment->fee;
-        $hosptal_vat = $config_payment->vat;
+        $hospital_vat = $config_payment->vat;
 
         $total = $specialist_fee + $doctor_fee + $hospital_fee;
 
-        $total_with_vat = ($total * $hosptal_vat) / 100;
+        $total_with_vat = ($total * $hospital_vat) / 100;
         $grand_total = $total + $total_with_vat;
 
         return view('pages.frontsite.payment.index', compact('appointment', 'config_payment', 'total_with_vat', 'grand_total', 'id'));

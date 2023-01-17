@@ -11,15 +11,15 @@
                 <!-- Doctor Information -->
                 <div class="flex flex-wrap items-center space-x-5">
                     <div class="flex-shrink-0">
-                        <img src="{{asset('assets/frontsite/images/doctor-1.png')}}"
+                        <img src="{{url(Storage::url($appointment->doctor->photo))}}"
                             class="w-20 h-20 rounded-full bg-center object-cover object-top" alt="Doctor 1" />
                     </div>
 
                     <div class="flex-1 space-y-1">
                         <div class="text-[#1E2B4F] text-lg font-semibold">
-                            Dr. Galih Pratama
+                            {{$appointment->doctor->name}}
                         </div>
-                        <div class="text-[#AFAEC3]">Cardiologist</div>
+                        <div class="text-[#AFAEC3]">{{$appointment->doctor->specialist->name}}</div>
 
                         <!--
                         Icon when mobile is show.
@@ -116,27 +116,27 @@
                     <h5 class="text-[#1E2B4F] text-lg font-semibold">Appointment</h5>
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Kebutuhan konsultasi</div>
-                        <div class="text-[#1E2B4F] font-medium">Jantung sesak</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->consultation->name}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Level</div>
-                        <div class="text-[#1E2B4F] font-medium">Medium</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->level}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Dijadwalkan pada</div>
-                        <div class="text-[#1E2B4F] font-medium">12 Januari 2022</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->date}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Waktu</div>
-                        <div class="text-[#1E2B4F] font-medium">15:30 PM</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->time}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Status</div>
-                        <div class="text-[#1E2B4F] font-medium">Waiting for Payment</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->status}}</div>
                     </div>
                 </div>
 
@@ -152,22 +152,22 @@
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Fee dokter</div>
-                        <div class="text-[#1E2B4F] font-medium">$200</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$appointment->doctor->fee}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Fee hospital</div>
-                        <div class="text-[#1E2B4F] font-medium">$10</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$config_payment->fee}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">VAT 20%</div>
-                        <div class="text-[#1E2B4F] font-medium">$372</div>
+                        <div class="text-[#1E2B4F] font-medium">{{$config_payment->vat}}</div>
                     </div>
 
                     <div class="flex items-center justify-between mt-5">
                         <div class="text-[#AFAEC3] font-medium">Grand total</div>
-                        <div class="text-[#2AB49B] font-semibold">$6,500</div>
+                        <div class="text-[#2AB49B] font-semibold">{{$grand_total}}</div>
                     </div>
                 </div>
             </div>
