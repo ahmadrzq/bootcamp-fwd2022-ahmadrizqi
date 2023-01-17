@@ -11,9 +11,9 @@
                 <img src="{{ url(Storage::url($doctor->photo)) }}"
                     class="inline-block w-32 h-32 rounded-full bg-center object-cover object-top" alt="doctor-1" />
                 <div class="text-[#1E2B4F] text-lg font-semibold mt-4">
-                    {{ $doctor->name }}
+                    {{ $doctor->name ?? '' }}
                 </div>
-                <div class="text-[#AFAEC3] mt-1">{{ $doctor->specialist->name }}</div>
+                <div class="text-[#AFAEC3] mt-1">{{ $doctor->specialist->name ?? '' }}</div>
                 <div class="flex justify-center items-center gap-x-2 mt-4">
                     <div class="flex items-center gap-2">
                         <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
@@ -62,36 +62,39 @@
                     New Appointment
                 </h2>
 
-                <form action="" class="mt-8 space-y-5">
+                <form action="{{ route('appointment.store') }}" method="POST" enctype="multipart/form-data"
+                    class="mt-8 space-y-5">
+                    @csrf
+                    <input type="hidden" name="doctor_id" value="{{ $doctor->id ?? '' }}">
                     <label class="block">
-                        <select name="topic" id="topic"
+                        <select name="consultation_id" id="consultation_id"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                             placeholder="Topik Konsultasi">
                             <option disabled selected class="hidden">
                                 Topik Konsultasi
                             </option>
                             @forelse ($consultation as $key => $consultation_item)
-                                <option value="{{ $consultation_item->name }}">{{ $consultation_item->name }}</option>
+                                <option value="{{ $consultation_item->id }}">{{ $consultation_item->name }}</option>
                             @empty
                             @endforelse
                         </select>
                     </label>
 
                     <label class="block">
-                        <select name="level" id="level"
+                        <select name="level_id" id="level_id"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
                             placeholder="Level">
                             <option value="" disabled selected class="hidden">Level</option>
-                            <option value="Low">Low</option>
-                            <option value="Medium">Medium</option>
-                            <option value="High">High</option>
+                            <option value="1">Low</option>
+                            <option value="2">Medium</option>
+                            <option value="3">High</option>
                         </select>
                     </label>
 
                     <label class="relative block">
                         <input type="text" id="date" name="date"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                            placeholder="Choose Date" />
+                            placeholder="Choose Date" required />
                         <span class="absolute top-0 right-[11px] bottom-1/2 translate-y-[58%]"><svg width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -110,7 +113,7 @@
                     <label class="relative block">
                         <input type="text" id="time" name="time"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium placeholder:text-[#AFAEC3] placeholder:font-normal px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                            placeholder="Choose Time" />
+                            placeholder="Choose Time"  required/>
                         <span class="absolute top-0 right-[11px] bottom-1/2 translate-y-[58%]"><svg width="24"
                                 height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -123,8 +126,9 @@
                     </label>
 
                     <div class="grid">
-                        <a href="{{ route('payment.index') }}"
-                            class="bg-[#0D63F3] rounded-full mt-5 text-white text-lg font-medium px-10 py-3 text-center">Continue</a>
+                        <button type="submit"
+                            class="bg-[#0D63F3] rounded-full mt-5 text-white text-lg font-medium px-10 py-3 text-center"
+                            onclick="return confirm('Are you sure want to confirm this appointment ?')">Continue</button>
                     </div>
                 </form>
             </div>
@@ -153,7 +157,7 @@
         const fpTime = flatpickr('#time', {
             enableTime: true,
             noCalendar: true,
-            dateFormat: 'H:i K',
+            dateFormat: 'H:i',
             disableMobile: 'true',
         });
     </script>

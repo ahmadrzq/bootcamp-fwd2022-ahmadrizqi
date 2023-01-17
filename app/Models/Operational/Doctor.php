@@ -44,7 +44,7 @@ class Doctor extends Model
     public function appointment()
     {
         // 2 parameter (path model, field foreign key)
-        return $this->hasMany('App\Models\Operational\Appointment.php','doctor_id');
+        return $this->hasMany('App\Models\Operational\Appointment','doctor_id');
     }
 
     public function user(){

@@ -3,19 +3,22 @@
 namespace App\Http\Controllers\Frontsite;
 
 use App\Http\Controllers\Controller;
-
-//use library
+// use library here
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\Response;
 
-//use everything
+// use everything here
+// use Gate;
 use Auth;
-use Gate;
 
-//model
+// use model here
 use App\Models\User;
-use App\Models\MasterData\Consultation;
 use App\Models\Operational\Doctor;
+use App\Models\Operational\Appointment;
+use App\Models\MasterData\Specialist;
+use App\Models\MasterData\Consultation;
+
 
 // thirdparty package
 
@@ -54,7 +57,19 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        return abort(404);
+        $data = $request->all();
+
+        $appointment = new Appointment;
+        $appointment->doctor_id = $data['doctor_id'];
+        $appointment->user_id = Auth::user()->id;
+        $appointment->consultation_id = $data['consultation_id'];
+        $appointment->level = $data['level_id'];
+        $appointment->date = $data['date'];
+        $appointment->time = $data['time'];
+        $appointment->status = 2;
+        $appointment->save();
+
+        return redirect()->route('payment.appointment', $appointment->id);
     }
 
     /**

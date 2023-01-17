@@ -134,8 +134,8 @@
                             </div>
                             <div class="flex items-center justify-between mt-5">
                                 <div>
-                                    <div class="text-[#1E2B4F] text-lg font-semibold">{{$doctor_item->name}}</div>
-                                    <div class="text-[#AFAEC3] mt-1">{{$doctor_item->specialist->name}}</div>
+                                    <div class="text-[#1E2B4F] text-lg font-semibold">{{$doctor_item->name ?? ''}}</div>
+                                    <div class="text-[#AFAEC3] mt-1">{{$doctor_item->specialist->name ?? ''}}</div>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <img src="{{ asset('assets/frontsite/images/star.svg') }}" alt="Star">
