@@ -37,7 +37,7 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        return view('pages.frontsite.payment.index');
+        return abort(404);
     }
 
     /**
@@ -104,5 +104,26 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         return abort(404);
+    }
+
+    //custom
+
+    public function payment($id)
+    {
+        $appointment = Appointment::where('id', $id)->first();
+        $config_payment = ConfigPayment::first();
+
+        //set value
+        $specialist_fee = $appointment->doctor->specialist->price;
+        $doctor_fee = $appointment->doctor->fee;
+        $hospital_fee = $config_payment->fee;
+        $hosptal_vat = $config_payment->vat;
+
+        $total = $specialist_fee + $doctor_fee + $hospital_fee;
+
+        $total_with_vat = ($total * $hosptal_vat) / 100;
+        $grand_total = $total + $total_with_vat;
+
+        return view('pages.frontsite.payment.index', compact('appointment', 'config_payment', 'total_with_vat', 'grand_total', 'id'));
     }
 }
