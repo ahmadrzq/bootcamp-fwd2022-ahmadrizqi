@@ -199,7 +199,8 @@
                     Choose Your <br />
                     Payment Method
                 </h3>
-                <form action="" x-data="{ payment: '' }" class="mt-8">
+                <form action="{{route('payment.store')}}" method="POST" enctype="multipart/form-data" x-data="{ payment: '' }" class="mt-8">
+                    @csrf
                     <!-- List Payment -->
                     <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 gap-5">
                         <div class="relative">
@@ -251,13 +252,14 @@
                     </div>
 
                     <div class="mt-10 grid">
+                        <input type="hidden" name="appointment_id" value="{{ $id ?? '' }}">
                         <!--
                                 button when payment is filled.
                               -->
-                        <a href="booking-success.html" class="bg-[#0D63F3] text-white px-10 py-3 rounded-full text-center"
+                        <button type="submit" class="bg-[#0D63F3] text-white px-10 py-3 rounded-full text-center"
                             x-show="payment.length">
                             Pay Now
-                        </a>
+                            </button >
 
                         <!--
                                 button when payment is empty.

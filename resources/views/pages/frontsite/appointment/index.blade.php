@@ -69,8 +69,8 @@
                     <label class="block">
                         <select name="consultation_id" id="consultation_id"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                            placeholder="Topik Konsultasi">
-                            <option disabled selected class="hidden">
+                            placeholder="Topik Konsultasi" required>
+                            <option value="" disabled selected class="hidden">
                                 Topik Konsultasi
                             </option>
                             @forelse ($consultation as $key => $consultation_item)
@@ -83,7 +83,7 @@
                     <label class="block">
                         <select name="level_id" id="level_id"
                             class="block w-full rounded-full py-4 text-[#1E2B4F] font-medium px-7 border border-[#d4d4d4] focus:outline-none focus:border-[#0D63F3]"
-                            placeholder="Level">
+                            placeholder="Level" required>
                             <option value="" disabled selected class="hidden">Level</option>
                             <option value="1">Low</option>
                             <option value="2">Medium</option>
