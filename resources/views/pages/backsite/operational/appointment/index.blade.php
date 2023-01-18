@@ -101,7 +101,7 @@
                                                                 </td>
                                                                 <td>{{ isset($appointment_item->date) ? date('d/m/Y', strtotime($appointment_item->date)) : '' }}
                                                                 </td>
-                                                                <td>{{ isset($appointment_item->time) ? date('H:i:s', strtotime($appointment_item->time)) : '' }}
+                                                                <td>{{ isset($appointment_item->time) ? date('H:i', strtotime($appointment_item->time)) : '' }}
                                                                 </td>
                                                                 <td>
                                                                     @if ($appointment_item->status == 1)
