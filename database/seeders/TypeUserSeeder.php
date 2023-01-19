@@ -31,6 +31,11 @@ class TypeUserSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'name' => 'Perawat',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         // this array $type_user will be insert to table 'type_user'
