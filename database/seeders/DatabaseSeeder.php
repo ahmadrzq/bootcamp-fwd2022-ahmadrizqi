@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
         $this->call([
             TypeUserSeeder::class,
             ConsultationSeeder::class,
@@ -28,5 +27,6 @@ class DatabaseSeeder extends Seeder
             RoleUserSeeder::class,
         ]);
         \App\Models\Operational\Doctor::factory(10)->create();
+        \App\Models\User::factory(26)->create();
     }
 }

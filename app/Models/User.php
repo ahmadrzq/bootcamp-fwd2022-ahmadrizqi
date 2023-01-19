@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class User extends Authenticatable
 {
     use HasApiTokens;
-    // use HasFactory;
+    use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
@@ -89,5 +90,10 @@ class User extends Authenticatable
 
     public function doctor(){
         return $this->hasOne('App\Models\Operational\Doctor','user_id');
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 }
