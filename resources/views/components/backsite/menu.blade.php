@@ -117,6 +117,15 @@
                     </li>
                     @endcan
 
+                    @can('hospital_nurse_access')
+                    <li
+                        class="{{ request()->is('backsite/hospital_nurse') || request()->is('backsite/hospital_nurse/*') || request()->is('backsite/*/hospital_nurse') || request()->is('backsite/*/hospital_nurse/*') ? 'active' : '' }} ">
+                        <a class="menu-item" href="{{route('backsite.hospital_nurse.index')}}">
+                            <i></i><span>Hospital Nurse</span>
+                        </a>
+                    </li>
+                    @endcan
+
 
                     {{-- here you can add nurse --}}
 

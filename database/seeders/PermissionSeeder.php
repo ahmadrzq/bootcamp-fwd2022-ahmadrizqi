@@ -228,6 +228,17 @@ class PermissionSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+            // hospital nurse
+            [
+                'title'      => 'hospital_nurse_access',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'title'      => 'hospital_nurse_table',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
             // appointment
             [
                 'title'      => 'appointment_access',

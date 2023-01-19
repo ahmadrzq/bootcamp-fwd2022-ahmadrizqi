@@ -17,6 +17,7 @@ use App\Http\Controllers\Backsite\PermissionController;
 use App\Http\Controllers\Backsite\SpecialistController;
 use App\Http\Controllers\Backsite\ConsultationController;
 use App\Http\Controllers\Backsite\ConfigPaymentController;
+use App\Http\Controllers\Backsite\HospitalNurseController;
 use App\Http\Controllers\Backsite\HospitalPatientController;
 use App\Http\Controllers\Backsite\ReportAppointmentController;
 use App\Http\Controllers\Backsite\ReportTransactionController;
@@ -46,7 +47,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('payment/appointment/{id}', 'payment')->name('payment.appointment');
         Route::post('payment/callback', 'callback')->name('payment.callback');
     });
-    
+
     //Payment page
     Route::resource('payment', PaymentController::class);
 });
@@ -76,4 +77,6 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('doctor', DoctorController::class);
     // hospital patient
     Route::resource('hospital_patient', HospitalPatientController::class);
+    // hospital nurse
+    Route::resource('hospital_nurse', HospitalNurseController::class);
 });
