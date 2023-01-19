@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Operational\Doctor;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -26,5 +27,6 @@ class DatabaseSeeder extends Seeder
             PermissionRoleSeeder::class,
             RoleUserSeeder::class,
         ]);
+        \App\Models\Operational\Doctor::factory(10)->create();
     }
 }

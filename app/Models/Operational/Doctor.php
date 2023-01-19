@@ -2,13 +2,13 @@
 
 namespace App\Models\Operational;
 
+use Database\Factories\DoctorFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 class Doctor extends Model
 {
-    // use HasFactory;
+    use HasFactory;
     use SoftDeletes;
 
     // declare table
@@ -49,5 +49,10 @@ class Doctor extends Model
 
     public function user(){
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    protected static function newFactory()
+    {
+        return DoctorFactory::new();
     }
 }
